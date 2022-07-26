@@ -8,6 +8,7 @@ from itertools import product
 import plotly.graph_objects as go
 from mpl_toolkits.mplot3d import Axes3D
 from numpy import random
+from datetime import datetime
 
 
 import pandas as pd
@@ -22,7 +23,7 @@ from traitlets import default
 
 ###############################################
 # Data from google colab
-print("DBG#1: import data")
+print(datetime.now().strftime("%H:%M:%S"), "DBG#1: import data")
 attack_data = pd.read_csv("attack_data.csv")
 attack_data.drop(["Unnamed: 0"], axis = 1, inplace=True)
 
@@ -46,7 +47,7 @@ home = np.array(home["0"])
 #Predicting results Using PMF of attacking, defensice and home parameter
 
 def score_pred(home_team, away_team, i, j):
-    print("DBG#2: inside score_pred function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#2: inside score_pred function")
     attack_PMF_home = poisson.pmf(int(i), np.exp(home + attack_data[[home_team]].values + defence_data[[away_team]].values))
     attack_PMF_away = poisson.pmf(int(j), np.exp(attack_data[[away_team]].values + defence_data[[home_team]].values))
     pred = np.mean(attack_PMF_home * attack_PMF_away)
@@ -57,7 +58,7 @@ def score_pred(home_team, away_team, i, j):
 
 #Score pred 3D plot
 def prob_3d_function(home_team, away_team):
-    print("DBG#3: inside prob_3d_function function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#3: inside prob_3d_function function")
     if home_team == away_team:
         "Not Possible"
     else:
@@ -97,7 +98,7 @@ def prob_3d_function(home_team, away_team):
 
 #What is the probability of a given home team to win against a random team in the premier leauge: ?
 def prob_home_win(home_team, away_team):
-    print("DBG#4: inside prob_home_win function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#4: inside prob_home_win function")
     if home_team == away_team: 
         #image = Image.open("Red-Card.jpg")
         return "Not Possible" #disp_col.image(image, caption= "NOT POSSIBLE!")
@@ -123,7 +124,7 @@ def prob_home_win(home_team, away_team):
 ############################################################################
 #Prob plot
 def outcome_plot(home_team, away_team):
-    print("DBG#5: inside outcome_plot function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#5: inside outcome_plot function")
     Heights = prob_home_win(home_team, away_team)
     bars = (home_team + " winning", "Draw", away_team + " winning")
     xpos = np.arange(len(bars))
@@ -144,7 +145,7 @@ def outcome_plot(home_team, away_team):
 ##                Predicting the 2022/2023 Premier Leauge                         ##
 
 #Step 1 Reading and cleaning the dataset
-print("DBG#6: reading and cleaning the dataset")
+print(datetime.now().strftime("%H:%M:%S"), "DBG#6: reading and cleaning the dataset")
 pl_22_23 = pd.read_csv("Pl_22_23.csv")
 
 pl_22_23.drop(pl_22_23.columns[[0,1, 3]], axis=1, inplace=True)
@@ -175,7 +176,7 @@ pl_22_23 = pd.concat([pl_22_23, a], axis = 1)
 
 
 for j in range(0,1000):
-    print("DBG#7: inside for loop (0,1000)")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#7: inside for loop (0,1000)")
     attack_data_subset = attack_data.iloc[j, :]
     defence_data_subset = defence_data.iloc[j, :]
     
@@ -194,30 +195,35 @@ for j in range(0,1000):
 
 
 def Sim_outcome2(sim_number):
-    print("DBG#8: inside Sim_outcome2 function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8: inside Sim_outcome2 function")
     points = pl_22_23.iloc[:, 1:4]
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.1")
     x = pl_22_23.iloc[:, (4 + 2*sim_number)]
     y = pl_22_23.iloc[:, (4 + 2 * sim_number + 1)]
-    
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.2")
+
     points["Home Points"] = (x > y) *3 + 1*(x == y)
     points["Away Points"] = (x < y) * 3 + 1*(x == y)
-    
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.3")
     #points.groupby(['Home Team']).sum().iloc[:, 1] #Home Points pr team
     #points.groupby(["Away Team"]).sum().iloc[:, -1] #Away points pr team
 
     #Goals scored pr team
     goals_scored = (pl_22_23.groupby("Home Team").sum().iloc[:, sim_number*2+ 1].values +pl_22_23.groupby("Away Team").sum().iloc[: , sim_number*2 + 2].values) #Goals scored at away 
-
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.4")
     #Goals conceded pr team
     goals_conceded = (pl_22_23.groupby("Home Team").sum().iloc[:, sim_number*2 + 2].values + pl_22_23.groupby("Away Team").sum().iloc[: , sim_number*2 + 1].values)
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.5")
 
     table1 = pd.DataFrame(points["Home Team"].sort_values(ascending = True).unique(), columns= ["Team"])
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.6")
     table1["Games"] = 38
     table1["Goals Scored"] = goals_scored
     table1["Goals conceded"] = goals_conceded
     table1["Goal Difference"] = goals_scored - goals_conceded
     table1["Total Points"] = points.groupby(['Away Team']).sum().iloc[: ,-1 ].values + points.groupby(['Home Team']).sum().iloc[:,1].values
     table1["Team"] = table1['Team'].replace({'Cardiff':'Nottingham Forest'})
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#8.7")
     return table1
 
 
@@ -225,7 +231,7 @@ def Sim_outcome2(sim_number):
 random.seed(123)
 @st.cache(suppress_st_warning= True)
 def simula(id):
-    print("DBG#9: inside simula function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#9: inside simula function")
     test = Sim_outcome2(id)[["Team", "Total Points", "Goal Difference"]]
     test.sort_values(by = ["Total Points", "Goal Difference"], ascending = [False, False], inplace = True, ignore_index = True)
     test.index=  test.index + 1
@@ -246,7 +252,7 @@ def simula(id):
 #    return standings
 
 def load_model(func):
-    print("DBG#10: inside load_model function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#10: inside load_model function")
     test = []
     for i in range(0, 1000):
         test.append(func(i))
@@ -265,7 +271,7 @@ Standing_probs = pd.DataFrame(index = index)
 
 
 for i in range(1, 21):
-    print("DBG#11: for loop (1,21)")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#11: for loop (1,21)")
     Standing_probs = Standing_probs.join(pd.DataFrame(standings.loc[i].value_counts()/1000))
 
 Standing_probs.sort_values(by = 1, ascending = False, inplace = True)
@@ -275,7 +281,7 @@ Standing_probs.fillna(0, inplace= True)
 #Function 1: What is the probability of team i ending up in position n?
 
 def position_prob(team_name, n):
-    print("DBG#12: inside position_prob function")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#12: inside position_prob function")
     prob = Standing_probs.loc[team_name, n]
     return prob
 
@@ -286,7 +292,7 @@ def position_prob(team_name, n):
  
 
 # #Streamlit
-print("DBG#13: streamlit section start")
+print(datetime.now().strftime("%H:%M:%S"), "DBG#13: streamlit section start")
 header = st.container()
 Probability_model = st.container()
 score_prediction_model = st.container()
@@ -307,13 +313,13 @@ st.markdown(
 )
 
 with header:
-    print("DBG#14: set header properties")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#14: set header properties")
     st.title("Welcome to my summer internship project")
     st.text("This summer I've have developed different regression models to predict different outcomes in accosiation fotball")
 
 
 with Probability_model:
-    print("DBG#15: set probability model properties")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#15: set probability model properties")
     st.header("Probabilities of hometeam winning a game")
     st.text("What is the probability of a given team i to beat a team j")
 
@@ -331,7 +337,7 @@ with Probability_model:
 
 
 with score_prediction_model:
-    print("DBG#16: set prediction model properties")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#16: set prediction model properties")
     st.header("Score prediction probability")
     st.text("Here you can calculate probabilities of different fotball results between home and away team")
 
@@ -355,7 +361,7 @@ with score_prediction_model:
 
 
 with Leauge_table_model:
-    print("DBG#17: set league table model properties")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#17: set league table model properties")
     st.subheader("Leauge Table probability")
     st.text("What is the probability of a given team to end up in n-th position ? ")
 
@@ -369,7 +375,7 @@ with Leauge_table_model:
     
 
 with Outcome_model:
-    print("DBG#18: set outcome model properties")
+    print(datetime.now().strftime("%H:%M:%S"), "DBG#18: set outcome model properties")
     st.subheader("Outcomes for 22/23 season")
 
     options = ["Winning the premier leauge", "Top 4", "Europa leauge (5th, 6th)", "Relegation"]
@@ -378,9 +384,3 @@ with Outcome_model:
     
     Outcome = left_col.selectbox("Select fotball outcome", options= options, index = 0)
     #f outcome == "Winning the premier"
-
-
-
-
-
-

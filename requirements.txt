@@ -3,7 +3,6 @@ pandas
 numpy
 pymc3
 theano
-re
 statistics
 math
 scipy

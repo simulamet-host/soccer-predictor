@@ -4,6 +4,5 @@ numpy
 pymc3
 theano
 statistics
-math
 scipy
 os

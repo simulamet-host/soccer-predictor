@@ -5,3 +5,4 @@ pymc3
 theano
 statistics
 scipy
+plotly

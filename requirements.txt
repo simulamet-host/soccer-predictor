@@ -6,3 +6,4 @@ theano
 statistics
 scipy
 plotly
+streamlit_lottie

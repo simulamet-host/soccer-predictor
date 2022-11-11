@@ -15,7 +15,7 @@ import requests
 
 import pandas as pd
 import numpy as np
-import pymc3 as pm
+#import pymc3 as pm
 from statistics import mean
 from math import factorial
 from scipy.stats import poisson

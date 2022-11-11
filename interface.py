@@ -113,7 +113,8 @@ def prob_home_win(home_team, away_team):
         attack_j = attack_data[[away_team]].values
         defence_j = defence_data[[away_team]].values
          
-        atts_i = np.exp(home + attack_i + defence_j)
+        #atts_i = np.exp(home + attack_i + defence_j)
+        atts_i = np.exp(0 + attack_i + defence_j)
         atts_j = np.exp(attack_j + defence_i)
          
         prob_W_home = skellam.sf(0, np.mean(atts_i), np.mean(atts_j))

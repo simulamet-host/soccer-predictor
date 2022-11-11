@@ -1,9 +1,9 @@
 matplotlib
 pandas
 numpy
-pymc3
 theano
 statistics
 scipy
 plotly
 streamlit_lottie
+traitlets

@@ -31,10 +31,10 @@ attack_data.drop(["Unnamed: 0"], axis = 1, inplace=True)
 
 defence_data = pd.read_csv("defence_data.csv")
 defence_data.drop(["Unnamed: 0"], axis = 1, inplace= True)
-home = pd.read_csv("Home.csv")
+#home = pd.read_csv("Home.csv")
 
-home.drop(["Unnamed: 0"], axis = 1, inplace= True)
-home = np.array(home["0"])
+#home.drop(["Unnamed: 0"], axis = 1, inplace= True)
+#home = np.array(home["0"])
 
 
 ################################################

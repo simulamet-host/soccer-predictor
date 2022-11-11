@@ -50,7 +50,8 @@ defence_data.drop(["Unnamed: 0"], axis = 1, inplace= True)
 
 def score_pred(home_team, away_team, i, j):
     print(datetime.now().strftime("%H:%M:%S"), "DBG#2: inside score_pred function")
-    attack_PMF_home = poisson.pmf(int(i), np.exp(home + attack_data[[home_team]].values + defence_data[[away_team]].values))
+    #attack_PMF_home = poisson.pmf(int(i), np.exp(home + attack_data[[home_team]].values + defence_data[[away_team]].values))
+    attack_PMF_home = poisson.pmf(int(i), np.exp(0 + attack_data[[home_team]].values + defence_data[[away_team]].values))
     attack_PMF_away = poisson.pmf(int(j), np.exp(attack_data[[away_team]].values + defence_data[[home_team]].values))
     pred = np.mean(attack_PMF_home * attack_PMF_away)
     return pred

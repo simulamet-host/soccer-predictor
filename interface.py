@@ -204,7 +204,8 @@ def test():
         defence_data_home = defence_data_subset[pl_22_23["Home Team"]].values
         defence_data_away = defence_data_subset[pl_22_23["Away Team"]].values
         
-        home_goals = np.exp(np.mean(home) + attack_data_home + defence_data_away)
+        #home_goals = np.exp(np.mean(home) + attack_data_home + defence_data_away)
+        home_goals = np.exp(0 + attack_data_home + defence_data_away)
         away_goals = np.exp(attack_data_away + defence_data_home)
         
         pl_22_23.iloc[:, 4 + 2*j] = random.poisson(home_goals, len(home_goals))

@@ -416,7 +416,7 @@ with header:
 
 with Probability_model:
     print(datetime.now().strftime("%H:%M:%S"), "DBG#15: set probability model properties")
-    st.header("Probabilities of hometeam winning a game")
+    st.header("Use Case 1: Win-Lose-Draw Probability")
     st.text("What is the probability of a given team i to beat a team j")
 
     sel_col, disp_col = st.columns(2)
@@ -434,7 +434,7 @@ with Probability_model:
 
 with score_prediction_model:
     print(datetime.now().strftime("%H:%M:%S"), "DBG#16: set prediction model properties")
-    st.header("Score prediction probability")
+    st.header("Use Case 2: Goals Scored")
     st.text("Here you can calculate probabilities of different fotball results between home and away team")
 
     sel_col, set_slide ,disp_col = st.columns(3)
@@ -457,7 +457,7 @@ with score_prediction_model:
 
 
 with Leauge_table_model:
-    st.subheader("Leauge Table probability")
+    st.subheader("Use Case 3: League Standing")
     st.text("What is the probability of a given team to end up in n-th position ? ")
 
     left_col, display_left_col, right_col = st.columns(3)
@@ -479,7 +479,8 @@ print(" ")
 
 with Outcome_model:
     print(datetime.now().strftime("%H:%M:%S"), "DBG#18: set outcome model properties")
-    st.subheader("Outcomes for 22/23 season")
+    st.subheader("Use Case 4: League Predictor")
+    st.text("Outcomes for the 2022/2023 season")
 
     options = ["Winning the premier leauge", "Top 4", "Europa leauge (5th, 6th)", "Relegation"]
     left_col, right_col = st.columns(2)

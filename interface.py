@@ -31,10 +31,10 @@ attack_data.drop(["Unnamed: 0"], axis = 1, inplace=True)
 
 defence_data = pd.read_csv("defence_data.csv")
 defence_data.drop(["Unnamed: 0"], axis = 1, inplace= True)
-#home = pd.read_csv("Home.csv")
+home = pd.read_csv("Home.csv")
 
-#home.drop(["Unnamed: 0"], axis = 1, inplace= True)
-#home = np.array(home["0"])
+home.drop(["Unnamed: 0"], axis = 1, inplace= True)
+home = np.array(home["0"])
 
 
 ################################################
@@ -50,8 +50,8 @@ defence_data.drop(["Unnamed: 0"], axis = 1, inplace= True)
 
 def score_pred(home_team, away_team, i, j):
     print(datetime.now().strftime("%H:%M:%S"), "DBG#2: inside score_pred function")
-    #attack_PMF_home = poisson.pmf(int(i), np.exp(home + attack_data[[home_team]].values + defence_data[[away_team]].values))
-    attack_PMF_home = poisson.pmf(int(i), np.exp(0 + attack_data[[home_team]].values + defence_data[[away_team]].values))
+    attack_PMF_home = poisson.pmf(int(i), np.exp(home + attack_data[[home_team]].values + defence_data[[away_team]].values))
+    #attack_PMF_home = poisson.pmf(int(i), np.exp(0 + attack_data[[home_team]].values + defence_data[[away_team]].values))
     attack_PMF_away = poisson.pmf(int(j), np.exp(attack_data[[away_team]].values + defence_data[[home_team]].values))
     pred = np.mean(attack_PMF_home * attack_PMF_away)
     return pred
@@ -114,8 +114,8 @@ def prob_home_win(home_team, away_team):
         attack_j = attack_data[[away_team]].values
         defence_j = defence_data[[away_team]].values
          
-        #atts_i = np.exp(home + attack_i + defence_j)
-        atts_i = np.exp(0 + attack_i + defence_j)
+        atts_i = np.exp(home + attack_i + defence_j)
+        #atts_i = np.exp(0 + attack_i + defence_j)
         atts_j = np.exp(attack_j + defence_i)
          
         prob_W_home = skellam.sf(0, np.mean(atts_i), np.mean(atts_j))
@@ -206,7 +206,7 @@ def test():
         defence_data_home = defence_data_subset[pl_22_23["Home Team"]].values
         defence_data_away = defence_data_subset[pl_22_23["Away Team"]].values
         
-        #home_goals = np.exp(np.mean(home) + attack_data_home + defence_data_away)
+        home_goals = np.exp(np.mean(home) + attack_data_home + defence_data_away)
         home_goals = np.exp(0 + attack_data_home + defence_data_away)
         away_goals = np.exp(attack_data_away + defence_data_home)
         

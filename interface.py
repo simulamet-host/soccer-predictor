@@ -410,8 +410,8 @@ st.markdown(
 
 with header:
     print(datetime.now().strftime("%H:%M:%S"), "DBG#14: set header properties")
-    st.title("Welcome to my summer internship project")
-    st.text("This summer I've have developed different regression models to predict different outcomes in accosiation fotball")
+    st.title("Soccer Predictor")
+    st.text("Regression modules to predict different outcomes in association football(soccer).")
 
 
 with Probability_model:

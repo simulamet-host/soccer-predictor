@@ -1,9 +1,1 @@
-matplotlib
-pandas
-numpy
-theano
-statistics
-scipy
-plotly
-streamlit_lottie
-traitlets
+

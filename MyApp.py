@@ -19,6 +19,10 @@ use_cases = {
 # Sidebar menu
 st.sidebar.title('Menu')
 
+# Home button to return to main menu
+if st.sidebar.button('Home'):
+    st.session_state.selected_case = None
+
 # Per Game section
 st.sidebar.header('Per Game')
 for case in ['Use Case 1: Goals Scored', 'Use Case 2: Win-Lose-Draw Probability']:
@@ -38,5 +42,6 @@ if st.session_state.selected_case:
 else:
     st.title('⚽ Soccer Predictor')
     st.write("Welcome to the Soccer Predictor dashboard! Please select a use case from the sidebar.")
+
 
 

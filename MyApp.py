@@ -2,49 +2,41 @@ import streamlit as st
 
 # Page title with soccer ball icon
 st.set_page_config(page_title='Soccer Predictor', page_icon='⚽')
-st.title('⚽ Soccer Predictor')
+
+# Initialize session state to store the selected use case
+if 'selected_case' not in st.session_state:
+    st.session_state.selected_case = None
+
+# Define a dictionary to store the titles and descriptions for each use case
+use_cases = {
+    'Use Case 1: Goals Scored': 'Goals Scored Description...',
+    'Use Case 2: Win-Lose-Draw Probability': 'Win-Lose-Draw Probability Description...',
+    'Use Case 3: League Standing': 'League Standing Description...',
+    'Use Case 4: League Predictor': 'League Predictor Description...',
+    'Use Case 5: Which Manager Is Better?': 'Which Manager Is Better? Description...'
+}
 
 # Sidebar menu
 st.sidebar.title('Menu')
 
 # Per Game section
 st.sidebar.header('Per Game')
-st.sidebar.subheader('[Use Case 1: Goals Scored](#use-case-1-goals-scored)')
-st.sidebar.subheader('[Use Case 2: Win-Lose-Draw Probability](#use-case-2-win-lose-draw-probability)')
+for case in ['Use Case 1: Goals Scored', 'Use Case 2: Win-Lose-Draw Probability']:
+    if st.sidebar.button(case):
+        st.session_state.selected_case = case
 
 # Per League section
 st.sidebar.header('Per League')
-st.sidebar.subheader('[Use Case 3: League Standing](#use-case-3-league-standing)')
-st.sidebar.subheader('[Use Case 4: League Predictor](#use-case-4-league-predictor)')
-st.sidebar.subheader('[Use Case 5: Which Manager Is Better?](#use-case-5-which-manager-is-better)')
+for case in ['Use Case 3: League Standing', 'Use Case 4: League Predictor', 'Use Case 5: Which Manager Is Better?']:
+    if st.sidebar.button(case):
+        st.session_state.selected_case = case
 
-# Main content
-def display_use_case(title, description):
-    st.header(title)
-    st.write(description)
+# Display the selected use case content
+if st.session_state.selected_case:
+    st.header(st.session_state.selected_case)
+    st.write(use_cases[st.session_state.selected_case])
+else:
+    st.title('⚽ Soccer Predictor')
+    st.write("Welcome to the Soccer Predictor dashboard! Please select a use case from the sidebar.")
 
-# Placeholder text for the use cases
-placeholder_text = """
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consequat ex quis neque porttitor pharetra. Curabitur eu odio congue, pretium justo ut, consequat enim. Donec sollicitudin mauris nec diam consectetur rhoncus.
-"""
-
-# Use Case 1: Goals Scored
-if st.sidebar.button('Use Case 1: Goals Scored'):
-    display_use_case('Use Case 1: Goals Scored', placeholder_text)
-
-# Use Case 2: Win-Lose-Draw Probability
-if st.sidebar.button('Use Case 2: Win-Lose-Draw Probability'):
-    display_use_case('Use Case 2: Win-Lose-Draw Probability', placeholder_text)
-
-# Use Case 3: League Standing
-if st.sidebar.button('Use Case 3: League Standing'):
-    display_use_case('Use Case 3: League Standing', placeholder_text)
-
-# Use Case 4: League Predictor
-if st.sidebar.button('Use Case 4: League Predictor'):
-    display_use_case('Use Case 4: League Predictor', placeholder_text)
-
-# Use Case 5: Which Manager Is Better?
-if st.sidebar.button('Use Case 5: Which Manager Is Better'):
-    display_use_case('Use Case 5: Which Manager Is Better', placeholder_text)
 

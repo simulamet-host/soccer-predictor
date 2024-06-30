@@ -1,5 +1,7 @@
 import streamlit as st
 import importlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Page title with soccer ball icon
 st.set_page_config(page_title='Soccer Predictor', page_icon='⚽')

@@ -1,12 +1,6 @@
 import streamlit as st
-
-# Attempt to import matplotlib and numpy, handle errors if they occur
-try:
-    import matplotlib.pyplot as plt
-    import numpy as np
-except ImportError as e:
-    st.error(f"An error occurred while importing required libraries: {e}")
-    st.stop()
+import matplotlib.pyplot as plt
+import numpy as np
 
 def show():
     st.header('Probabilities of a team winning a game against a selected team')
@@ -31,15 +25,13 @@ def show():
     away_win_prob = 1 - home_win_prob - draw_prob
     
     # Create the bar chart
-    try:
-        fig, ax = plt.subplots()
-        ax.bar([0, 1, 2], [home_win_prob, draw_prob, away_win_prob], color=['green', 'yellow', 'red'])
-        ax.set_xticks([0, 1, 2])
-        ax.set_xticklabels([f'{home_team} Winning', 'Draw', f'{away_team} Winning'])
-        ax.set_ylim(0, 1)
-        ax.set_ylabel('Probability')
-        ax.set_title('Probability of home team winning:')
-        st.pyplot(fig)
-    except Exception as e:
-        st.error(f"An error occurred while creating the plot: {e}")
+    fig, ax = plt.subplots()
+    ax.bar([0, 1, 2], [home_win_prob, draw_prob, away_win_prob], color=['green', 'yellow', 'red'])
+    ax.set_xticks([0, 1, 2])
+    ax.set_xticklabels([f'{home_team} Winning', 'Draw', f'{away_team} Winning'])
+    ax.set_ylim(0, 1)
+    ax.set_ylabel('Probability')
+    ax.set_title('Probability of home team winning:')
+    
+    st.pyplot(fig)
 

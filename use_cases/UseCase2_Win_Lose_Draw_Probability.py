@@ -19,6 +19,9 @@ def show():
     home_team = st.selectbox('Please select Home Team', clubs)
     away_team = st.selectbox('Please select the Away Team', [team for team in clubs if team != home_team])
     
+    # Add some spacing between the dropdowns and the chart
+    st.write('\n')  # Adding a newline for spacing
+    
     # Simulated probabilities for testing purposes
     home_win_prob = np.random.uniform(0.3, 0.6)
     draw_prob = np.random.uniform(0.2, 0.4)
@@ -31,7 +34,6 @@ def show():
     ax.set_xticklabels([f'{home_team} Winning', 'Draw', f'{away_team} Winning'])
     ax.set_ylim(0, 1)
     ax.set_ylabel('Probability')
-    ax.set_title('Probability of home team winning:')
+    ax.set_title('Probability of home team winning:', fontweight='bold')
     
     st.pyplot(fig)
-

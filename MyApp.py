@@ -1,19 +1,49 @@
 import streamlit as st
-from multiapp import MultiApp
-from pages import UseCase1_GoalsScored, UseCase2_Win_Lose_Draw_Probability, UseCase3_LeagueStanding, UseCase4_LeaguePredictor, UseCase5_WhichManagerIsBetter
 
 # Page title with soccer ball icon
 st.set_page_config(page_title='Soccer Predictor', page_icon='⚽')
 
-app = MultiApp()
+# Define a dictionary to store the titles and descriptions for each use case
+use_cases = {
+    'Home': ('Welcome to the Soccer Predictor dashboard! Please select a use case from the sidebar.', None),
+    'Use Case 1: Goals Scored': ('Goals Scored Description...', 'pages.UseCase1_GoalsScored'),
+    'Use Case 2: Win-Lose-Draw Probability': ('Win-Lose-Draw Probability Description...', 'pages.UseCase2_Win_Lose_Draw_Probability'),
+    'Use Case 3: League Standing': ('League Standing Description...', 'pages.UseCase3_LeagueStanding'),
+    'Use Case 4: League Predictor': ('League Predictor Description...', 'pages.UseCase4_LeaguePredictor'),
+    'Use Case 5: Which Manager Is Better?': ('Which Manager Is Better Description...', 'pages.UseCase5_WhichManagerIsBetter')
+}
 
-# Add all use cases here
-app.add_app("Home", lambda: st.write("Welcome to the Soccer Predictor dashboard! Please select a use case from the sidebar."))
-app.add_app("Use Case 1: Goals Scored", UseCase1_GoalsScored.app)
-app.add_app("Use Case 2: Win-Lose-Draw Probability", UseCase2_Win_Lose_Draw_Probability.app)
-app.add_app("Use Case 3: League Standing", UseCase3_LeagueStanding.app)
-app.add_app("Use Case 4: League Predictor", UseCase4_LeaguePredictor.app)
-app.add_app("Use Case 5: Which Manager Is Better?", UseCase5_WhichManagerIsBetter.app)
+# Sidebar menu
+st.sidebar.title('Menu')
 
-# Run the main app
-app.run()
+# Home button to return to main menu
+if st.sidebar.button('Home'):
+    st.session_state.selected_case = 'Home'
+
+# Per Game section
+st.sidebar.header('Per Game')
+if st.sidebar.button('Use Case 1: Goals Scored'):
+    st.session_state.selected_case = 'Use Case 1: Goals Scored'
+if st.sidebar.button('Use Case 2: Win-Lose-Draw Probability'):
+    st.session_state.selected_case = 'Use Case 2: Win-Lose-Draw Probability'
+
+# Per League section
+st.sidebar.header('Per League')
+if st.sidebar.button('Use Case 3: League Standing'):
+    st.session_state.selected_case = 'Use Case 3: League Standing'
+if st.sidebar.button('Use Case 4: League Predictor'):
+    st.session_state.selected_case = 'Use Case 4: League Predictor'
+if st.sidebar.button('Use Case 5: Which Manager Is Better?'):
+    st.session_state.selected_case = 'Use Case 5: Which Manager Is Better'
+
+# Display the selected use case content
+selected_case = st.session_state.get('selected_case', 'Home')
+title, module_path = use_cases[selected_case]
+
+if module_path:
+    # Dynamically import and execute the module's `app` function
+    module = __import__(module_path, fromlist=[''])
+    module.app()
+else:
+    st.title('⚽ Soccer Predictor')
+    st.write(title)

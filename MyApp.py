@@ -20,16 +20,16 @@ st.sidebar.header('Per Game')
 if st.sidebar.button('Use Case 1: Goals Scored'):
     st.session_state.selected_case = 'UseCase1_GoalsScored'
 if st.sidebar.button('Use Case 2: Win-Lose-Draw Probability'):
-    st.session_state.selected_case = 'win_lose_draw_probability'
+    st.session_state.selected_case = 'UseCase2_Win_Lose_Draw_Probability'
 
 # Per League section
 st.sidebar.header('Per League')
 if st.sidebar.button('Use Case 3: League Standing'):
-    st.session_state.selected_case = 'league_standing'
+    st.session_state.selected_case = 'UseCase3_LeagueStanding'
 if st.sidebar.button('Use Case 4: League Predictor'):
-    st.session_state.selected_case = 'league_predictor'
+    st.session_state.selected_case = 'UseCase4_LeaguePredictor'
 if st.sidebar.button('Use Case 5: Which Manager Is Better?'):
-    st.session_state.selected_case = 'which_manager_is_better'
+    st.session_state.selected_case = 'UseCase5_WhichManagerIsBetter'
 
 # Display the selected use case content
 if st.session_state.selected_case:

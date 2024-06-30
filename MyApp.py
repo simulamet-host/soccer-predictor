@@ -7,7 +7,7 @@ st.set_page_config(page_title='Soccer Predictor', page_icon='⚽')
 
 app = MultiApp()
 
-# Add all your applications (use cases) here
+# Add all use cases here
 app.add_app("Home", lambda: st.write("Welcome to the Soccer Predictor dashboard! Please select a use case from the sidebar."))
 app.add_app("Use Case 1: Goals Scored", UseCase1_GoalsScored.app)
 app.add_app("Use Case 2: Win-Lose-Draw Probability", UseCase2_Win_Lose_Draw_Probability.app)

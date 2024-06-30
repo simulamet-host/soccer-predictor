@@ -1,4 +1,5 @@
 import streamlit as st
+import importlib
 
 # Page title with soccer ball icon
 st.set_page_config(page_title='Soccer Predictor', page_icon='⚽')
@@ -32,7 +33,7 @@ if st.sidebar.button('Use Case 5: Which Manager Is Better?'):
 
 # Display the selected use case content
 if st.session_state.selected_case:
-    case_module = __import__(f'Pages.{st.session_state.selected_case}', fromlist=['show'])
+    case_module = importlib.import_module(f'Pages.{st.session_state.selected_case}')
     case_module.show()
 else:
     st.title('⚽ Soccer Predictor')

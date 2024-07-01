@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def show():
-    st.header('Use Case 2: Win-Lose-Draw Probability')
-    st.write('Probabilities of game outcomes (win-lose-draw) for selected home and away teams.')
+    st.header('Use Case 2: Game Outcome')
+    st.write('Game outcome (win-lose-draw) probabilities for selected home and away teams.')
     
     # List of football clubs
     clubs = [
@@ -17,8 +17,8 @@ def show():
     ]
     
     # Dropdowns for selecting home and away teams
-    home_team = st.selectbox('Please select Home Team', clubs)
-    away_team = st.selectbox('Please select the Away Team', [team for team in clubs if team != home_team])
+    home_team = st.selectbox('Please select Home Team:', clubs)
+    away_team = st.selectbox('Please select the Away Team:', [team for team in clubs if team != home_team])
     
     # Add some spacing between the dropdowns and the chart
     st.write('\n')  # Adding a newline for spacing
@@ -35,6 +35,6 @@ def show():
     ax.set_xticklabels([f'{home_team} Winning', 'Draw', f'{away_team} Winning'])
     ax.set_ylim(0, 1)
     ax.set_ylabel('Probability')
-    ax.set_title('Win-Lose-Draw Probabilities:', fontweight='bold')
+    ax.set_title('Game Outcome Probabilities', fontweight='bold')
     
     st.pyplot(fig)

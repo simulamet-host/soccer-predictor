@@ -34,6 +34,6 @@ def show():
     ax.set_xticklabels([f'{home_team} Winning', 'Draw', f'{away_team} Winning'])
     ax.set_ylim(0, 1)
     ax.set_ylabel('Probability')
-    ax.set_title('Probability of home team winning:', fontweight='bold')
+    ax.set_title('Win-Lose-Draw Probabilities:', fontweight='bold')
     
     st.pyplot(fig)

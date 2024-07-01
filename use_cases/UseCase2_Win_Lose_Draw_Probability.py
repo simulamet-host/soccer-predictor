@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def show():
-    st.header('Probabilities of a team winning a game against a selected team')
+    st.header('Use Case 2: Win-Lose-Draw Probability')
+    st.write('Probabilities of game outcomes (win-lose-draw) for selected home and away teams.')
     
     # List of football clubs
     clubs = [

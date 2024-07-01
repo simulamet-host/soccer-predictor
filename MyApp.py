@@ -19,8 +19,8 @@ if st.sidebar.button('Home'):
 st.sidebar.header('Per Game')
 if st.sidebar.button('Use Case 1: Goals Scored'):
     st.session_state.selected_case = 'UseCase1_GoalsScored'
-if st.sidebar.button('Use Case 2: Win-Lose-Draw Probability'):
-    st.session_state.selected_case = 'UseCase2_Win_Lose_Draw_Probability'
+if st.sidebar.button('Use Case 2: Game Outcome'):
+    st.session_state.selected_case = 'UseCase2_Game_Outcome'
 
 # Per League section
 st.sidebar.header('Per League')

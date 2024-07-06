@@ -4,7 +4,7 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
 def show():
-    st.header('Use Case 1: Score prediction probability')
+    st.header('Score prediction probability')
     st.write('Here you can calculate probabilities of different football results between home and away team.')
     
     # List of football clubs
@@ -40,10 +40,17 @@ def show():
         x, y = np.meshgrid(x, y)
         z = np.random.rand(max_goal_count_away + 1, max_goal_count_home + 1) * 20
         
-        ax.bar3d(x.flatten(), y.flatten(), np.zeros_like(z.flatten()), 1, 1, z.flatten())
-        ax.set_xlabel('Goals scored from ' + home_team)
-        ax.set_ylabel('Goals scored from ' + away_team)
-        ax.set_zlabel('Probability score in percentage')
+        ax.bar3d(x.flatten(), y.flatten(), np.zeros_like(z.flatten()), 1, 1, z.flatten(), color='forestgreen')
+        ax.set_xlabel('Goals scored from ' + home_team, labelpad=10)
+        ax.set_ylabel('Goals scored from ' + away_team, labelpad=10)
+        ax.set_zlabel('Probability score in percentage', labelpad=10)
+        
+        # Adjust the tick labels
+        ax.set_xticks(np.arange(0, max_goal_count_home + 1))
+        ax.set_yticks(np.arange(0, max_goal_count_away + 1))
+        
+        plt.xticks(rotation=45)
+        plt.yticks(rotation=45)
         
         st.pyplot(fig)
     

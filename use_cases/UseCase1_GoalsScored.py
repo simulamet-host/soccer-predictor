@@ -68,7 +68,7 @@ def show():
         st.markdown(f"""
             <div style='text-align: left;'>
                 <span style='font-size: 24px; font-weight: bold; color: black;'>Probability:</span>
-                <span style='font-size: 14px; color: green;'>{probability:.8f}</span>
+                <span style='font-size: 18px; color: green;'>{probability:.8f}</span>
             </div>
             """, unsafe_allow_html=True)
 

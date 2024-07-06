@@ -1,6 +1,14 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+import os
+
+# Add the utils directory to the system path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
+
+# Import the utility function
+from UseCase2 import calculate_win_lose_draw
 
 def show():
     st.header('Use Case 2: Game Outcome')
@@ -23,10 +31,8 @@ def show():
     # Add some spacing between the dropdowns and the chart
     st.write('\n')  # Adding a newline for spacing
     
-    # Simulated probabilities for testing purposes
-    home_win_prob = np.random.uniform(0.3, 0.6)
-    draw_prob = np.random.uniform(0.2, 0.4)
-    away_win_prob = 1 - home_win_prob - draw_prob
+    # Call the utility function to get probabilities
+    home_win_prob, draw_prob, away_win_prob = calculate_win_lose_draw(home_team, away_team)
     
     # Create the bar chart
     fig, ax = plt.subplots()

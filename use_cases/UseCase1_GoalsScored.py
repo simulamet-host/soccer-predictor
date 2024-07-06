@@ -65,5 +65,5 @@ def show():
     else:
         # Calculate probability
         probability = np.random.rand()
-        st.write(f"Probability: {probability}")
+        st.markdown(f"<div style='text-align: center; font-size: 24px; font-weight: bold; color: green;'>Probability: {probability:.4f}</div>", unsafe_allow_html=True)
 

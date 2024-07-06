@@ -52,7 +52,7 @@ def show():
         # Set tick labels font size
         ax.tick_params(axis='x', labelsize=7, pad=-5)
         ax.tick_params(axis='y', labelsize=7, pad=-3)
-        ax.tick_params(axis='z', labelsize=7, pad=0)
+        ax.tick_params(axis='z', labelsize=7, pad=-2)
         
         plt.xticks(rotation=45)
         plt.yticks(rotation=45)

@@ -50,9 +50,9 @@ def show():
         ax.set_yticks(np.arange(0, max_goal_count_away + 1))
 
         # Set tick labels font size
-        ax.tick_params(axis='x', labelsize=8)
-        ax.tick_params(axis='y', labelsize=8)
-        ax.tick_params(axis='z', labelsize=8)
+        ax.tick_params(axis='x', labelpad=1, labelsize=8)
+        ax.tick_params(axis='y', labelpad=1, labelsize=8)
+        ax.tick_params(axis='z', labelpad=1, labelsize=8)
         
         plt.xticks(rotation=45)
         plt.yticks(rotation=45)

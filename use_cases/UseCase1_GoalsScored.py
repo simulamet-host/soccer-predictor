@@ -41,8 +41,8 @@ def show():
         z = np.random.rand(max_goal_count_away + 1, max_goal_count_home + 1) * 20
         
         ax.bar3d(x.flatten(), y.flatten(), np.zeros_like(z.flatten()), 1, 1, z.flatten(), color='forestgreen')
-        ax.set_xlabel('Goals scored from ' + home_team, labelpad=10)
-        ax.set_ylabel('Goals scored from ' + away_team, labelpad=10)
+        ax.set_xlabel('Goals scored from ' + home_team, labelpad=20)
+        ax.set_ylabel('Goals scored from ' + away_team, labelpad=20)
         ax.set_zlabel('Probability score in percentage', labelpad=10)
         
         # Adjust the tick labels

@@ -4,7 +4,7 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
 def show():
-    st.header('Score prediction probability')
+    st.header('Use Case 1: Score prediction probability')
     st.write('Here you can calculate probabilities of different football results between home and away team.')
     
     # List of football clubs

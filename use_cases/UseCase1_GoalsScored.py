@@ -4,8 +4,8 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
 def show():
-    st.header('Use Case 1: Score prediction probability')
-    st.write('Here you can calculate probabilities of different football results between home and away team.')
+    st.header('Use Case 1: Goals Scored')
+    st.write('Goals scored probabilities for selected home and away teams.')
     
     # List of football clubs
     clubs = [
@@ -21,15 +21,15 @@ def show():
     max_goal_count_away = 10
     
     # Dropdowns for selecting home and away teams
-    home_team = st.selectbox('Select Home team', clubs)
-    away_team = st.selectbox('Select Away team', [team for team in clubs if team != home_team])
+    home_team = st.selectbox('Select Home Team:', clubs)
+    away_team = st.selectbox('Select Away Team:', [team for team in clubs if team != home_team])
     
     # Dropdowns for selecting number of goals
     home_goals_options = [str(i) for i in range(max_goal_count_home + 1)]
     away_goals_options = [str(i) for i in range(max_goal_count_away + 1)]
     
     home_goals = st.selectbox('Select number of Home goals:', ['Select'] + home_goals_options)
-    away_goals = st.selectbox('Select number of away goals:', ['Select'] + away_goals_options)
+    away_goals = st.selectbox('Select number of Away goals:', ['Select'] + away_goals_options)
     
     # Define a function to create a 3D plot
     def create_3d_plot():

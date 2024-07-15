@@ -36,6 +36,6 @@ def show():
         """, unsafe_allow_html=True)
     
     # Adding the image to the right side
-    image = Image.open('use_cases/football_field.jpg')
+    image = Image.open('data/logos/football_field.jpg')
     st.image(image, caption='', use_column_width=True)
 

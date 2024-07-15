@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 
 def show():
-    st.header('League Table Probability')
+    st.header('Use Case 3: League Table Probability')
     st.write('What is the probability of a given team to end up in n-th position?')
 
     # List of football clubs

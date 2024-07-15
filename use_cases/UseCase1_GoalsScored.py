@@ -1,7 +1,15 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+import os
 from mpl_toolkits.mplot3d import Axes3D
+
+# Add the utils directory to the system path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
+
+# Import the utility functions
+from UseCase1 import calculate_score_probability, calculate_score_probabilities
 
 def show():
     st.header('Use Case 1: Goals Scored')
@@ -38,7 +46,9 @@ def show():
         x = np.arange(0, max_goal_count_home + 1)
         y = np.arange(0, max_goal_count_away + 1)
         x, y = np.meshgrid(x, y)
-        z = np.random.rand(max_goal_count_away + 1, max_goal_count_home + 1) * 20
+        
+        # Call the utility function to get probabilities
+        z = calculate_score_probabilities(home_team, away_team, max_goal_count_home, max_goal_count_away)
         
         ax.bar3d(x.flatten(), y.flatten(), np.zeros_like(z.flatten()), 1, 1, z.flatten(), color='forestgreen')
         ax.set_xlabel('Goals scored by ' + home_team, labelpad=-7, fontsize=8.5)
@@ -64,7 +74,7 @@ def show():
         create_3d_plot()
     else:
         # Calculate probability
-        probability = np.random.rand()
+        probability = calculate_score_probability(home_team, away_team, int(home_goals), int(away_goals))
         st.markdown(f"""
             <div style='text-align: left;'>
                 <span style='font-size: 24px; font-weight: bold; color: black;'>Probability:</span>

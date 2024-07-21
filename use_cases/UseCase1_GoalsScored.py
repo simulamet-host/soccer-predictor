@@ -4,6 +4,7 @@ import numpy as np
 import sys
 import os
 from mpl_toolkits.mplot3d import Axes3D
+from leagues import get_league_metadata
 
 # Add the utils directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
@@ -15,15 +16,8 @@ def show():
     st.header('Use Case 1: Goals Scored')
     st.write('Goals scored probabilities for selected home and away teams.')
     
-    # List of football clubs
-    clubs = [
-        'Arsenal', 'Aston Villa', 'Blackburn Rovers', 'Chelsea', 'Coventry City', 
-        'Crystal Palace', 'Everton', 'Ipswich Town', 'Leeds United', 'Liverpool', 
-        'Manchester City', 'Manchester United', 'Middlesbrough', 'Norwich City', 
-        'Nottingham Forest', 'Oldham Athletic', 'Queens Park Rangers', 
-        'Sheffield United', 'Sheffield Wednesday', 'Southampton', 'Tottenham Hotspur', 
-        'Wimbledon'
-    ]
+    # Get league metadata
+    clubs, num_league_positions = get_league_metadata('epl')
     
     max_goal_count_home = 10
     max_goal_count_away = 10

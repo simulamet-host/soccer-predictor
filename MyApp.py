@@ -18,7 +18,7 @@ if st.sidebar.button('Home'):
 # Per Game section
 st.sidebar.header('Per Game')
 if st.sidebar.button('Use Case 1: Goals Scored'):
-    st.session_state.selected_case = 'UseCase1_GoalsScored'
+    st.session_state.selected_case = 'UseCase1'
 if st.sidebar.button('Use Case 2: Game Outcome'):
     st.session_state.selected_case = 'UseCase2_Game_Outcome'
 

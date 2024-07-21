@@ -30,8 +30,8 @@ num_league_positions_bundesliga = 18
 clubs_ligue1 = [
     'Angers', 'Auxerre', 'Brest', 'Le Havre', 'Lens', 
     'Lille', 'Lyon', 'Marseille', 'Monaco', 'Montpellier', 
-    'Nantes', 'Nice', 'Paris Saint-Germain', 'Reims', 'Rennais', 
-    'Saint-Étienne', 'Strasbourg', 'Toulouse'
+    'Nantes', 'Nice', 'Paris Saint-Germain', 'Reims', 'Rennes', 
+    'Strasbourg', 'Saint-Étienne', 'Toulouse'
 ]
 num_league_positions_ligue1 = 18
 

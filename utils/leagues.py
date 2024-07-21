@@ -11,10 +11,10 @@ clubs_epl = [
 num_league_positions_epl = 20
 
 clubs_laliga = [
-    'Almeria', 'Athletic Bilbao', 'Atletico Madrid', 'Barcelona', 'Cadiz', 
-    'Celta Vigo', 'Elche', 'Espanyol', 'Getafe', 'Girona', 
-    'Mallorca', 'Osasuna', 'Rayo Vallecano', 'Real Betis', 'Real Madrid', 
-    'Real Sociedad', 'Real Valladolid', 'Sevilla', 'Valencia', 'Villarreal'
+    'Alavés', 'Athletic Bilbao', 'Atlético Madrid', 'Barcelona', 'Celta Vigo',
+    'Espanyol', 'Getafe', 'Girona', 'Las Palmas', 'Leganés',
+    'Mallorca', 'Osasuna', 'Rayo Vallecano', 'Real Betis', 'Real Madrid',
+    'Real Sociedad', 'Sevilla', 'Valencia', 'Valladolid', 'Villarreal'
 ]
 num_league_positions_laliga = 20
 

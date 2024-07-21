@@ -1,5 +1,3 @@
-# leagues.py
-
 league = 'epl'
 
 # List of clubs and the number of league positions for each league
@@ -36,7 +34,7 @@ clubs_ligue1 = [
     'Nantes', 'Nice', 'Paris Saint-Germain', 'Reims', 'Rennais', 
     'Saint-Étienne', 'Strasbourg', 'Toulouse'
 ]
-num_league_positions_ligue1 = 20
+num_league_positions_ligue1 = 18
 
 # Define a function to get league metadata
 def get_league_metadata(league=league):

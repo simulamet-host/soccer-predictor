@@ -10,7 +10,7 @@ from leagues import get_league_metadata
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 
 # Import the utility functions
-from UseCase1 import calculate_score_probability, calculate_score_probabilities
+from UseCase1_utils import calculate_score_probability, calculate_score_probabilities
 
 def show():
     st.header('Use Case 1: Goals Scored')

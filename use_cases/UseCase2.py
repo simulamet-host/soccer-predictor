@@ -9,7 +9,7 @@ from leagues import get_league_metadata
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 
 # Import the utility function
-from UseCase2 import calculate_win_lose_draw
+from UseCase2_utils import calculate_win_lose_draw
 
 def show():
     st.header('Use Case 2: Game Outcome')

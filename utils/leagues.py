@@ -2,12 +2,11 @@ league = 'epl'
 
 # List of clubs and the number of league positions for each league
 clubs_epl = [
-    'Arsenal', 'Aston Villa', 'Blackburn Rovers', 'Chelsea', 'Coventry City', 
-    'Crystal Palace', 'Everton', 'Ipswich Town', 'Leeds United', 'Liverpool', 
-    'Manchester City', 'Manchester United', 'Middlesbrough', 'Norwich City', 
-    'Nottingham Forest', 'Oldham Athletic', 'Queens Park Rangers', 
-    'Sheffield United', 'Sheffield Wednesday', 'Southampton', 'Tottenham Hotspur', 
-    'Wimbledon'
+    'Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton & Hove Albion',
+    'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Ipswich Town', 
+    'Leicester City', 'Liverpool', 'Manchester City', 'Manchester United',
+    'Newcastle United', 'Nottingham Forest', 'Southampton', 'Tottenham Hotspur',
+    'West Ham United', 'Wolverhampton Wanderers'
 ]
 num_league_positions_epl = 20
 

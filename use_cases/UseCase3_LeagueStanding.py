@@ -1,20 +1,14 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
+from leagues import get_league_metadata
 
 def show():
     st.header('Use Case 3: League Standing')
     st.write('What is the probability of a given team to end up in n-th position?')
 
-    # List of football clubs
-    clubs = [
-        'Arsenal', 'Aston Villa', 'Blackburn Rovers', 'Chelsea', 'Coventry City', 
-        'Crystal Palace', 'Everton', 'Ipswich Town', 'Leeds United', 'Liverpool', 
-        'Manchester City', 'Manchester United', 'Middlesbrough', 'Norwich City', 
-        'Nottingham Forest', 'Oldham Athletic', 'Queens Park Rangers', 
-        'Sheffield United', 'Sheffield Wednesday', 'Southampton', 'Tottenham Hotspur', 
-        'Wimbledon'
-    ]
+   # Get league metadata
+    clubs, num_league_positions = get_league_metadata('epl')
     
     # Dropdown for selecting a team
     team = st.selectbox('Select a team:', clubs)

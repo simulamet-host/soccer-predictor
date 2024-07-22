@@ -14,15 +14,13 @@ def show():
     probability_matrix = generate_probability_matrix(size=20)
     
     # Create a DataFrame for better display in Streamlit
-    df = pd.DataFrame(probability_matrix, index=clubs, columns=[f"{i}" for i in range(1, 21)])
+    df = pd.DataFrame(probability_matrix, index=clubs, columns=[f"**{i}**" for i in range(1, 21)])
     
     # Apply styling to the DataFrame
-    styled_df = df.style.set_table_styles([
-        {'selector': 'th', 'props': [('font-weight', 'bold')]}  # Make headers bold
-    ]).set_properties(**{'font-weight': 'bold'}, subset=pd.IndexSlice[clubs, :])  # Make index (club names) bold
+    df.index = [f"**{club}**" for club in clubs]
     
     # Display the table with Streamlit
-    st.dataframe(styled_df.to_html(), unsafe_allow_html=True)
+    st.markdown(df.to_markdown(), unsafe_allow_html=True)
 
 # Call the function to display the UI
 show()

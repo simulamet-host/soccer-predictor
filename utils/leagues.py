@@ -1,4 +1,4 @@
-league = 'epl'
+league = 'laliga'
 
 # List of clubs and the number of league positions for each league
 clubs_epl = [

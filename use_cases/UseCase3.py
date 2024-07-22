@@ -20,14 +20,14 @@ def show():
     # Display the probability and the appropriate image
     if team == 'Select Team' or position == 'Select Position':
         probability = 'NA'
-        image = Image.open('media/logos/football_field.jpg')
+        image = Image.open('media/football_field.jpg')
     else:
         probability = f"{np.random.rand():.3f}"
         image_path = f"media/logos/EPL/{team}.png"
         if os.path.exists(image_path):
             image = Image.open(image_path)
         else:
-            image = Image.open('media/logos/football_field.jpg')  # Fallback image if logo not found
+            image = Image.open('media/football_field.jpg')  # Fallback image if logo not found
 
     # Display the probability
     st.markdown(f"""

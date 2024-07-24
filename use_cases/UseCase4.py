@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from utils.UseCase4_utils import generate_probability_matrix
-from leagues import get_league_metadata
+from utils.leagues import get_league_metadata
 
 def show():
     st.header('Use Case 4: League Predictor')

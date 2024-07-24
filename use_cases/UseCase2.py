@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import os
-from leagues import get_league_metadata
+from utils.leagues import get_league_metadata
 
 # Add the utils directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))

@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
-from leagues import get_league_metadata
+from utils.leagues import get_league_metadata
 import os
 
 def show():

@@ -31,8 +31,8 @@ def show():
     metric_1_period_1 = np.random.normal(loc=0, scale=1, size=100)
     metric_1_period_2 = np.random.normal(loc=0.5, scale=1, size=100)
         
-    metric_2_period_1 = np.random.rand(3)
-    metric_2_period_2 = np.random.rand(3)
+    metric_2_period_1_value = np.sum(np.random.randn(100))
+    metric_2_period_2_value = np.sum(np.random.randn(100))
     
     # Plotting the Metrics
     st.write(f"**Metrics Comparison for {team}**")
@@ -49,10 +49,11 @@ def show():
     st.pyplot(fig)
         
     # Metric 2: Pie Chart
-    st.write("### Metric 3: Pie Chart")
+    st.write("### Metric 2: Pie Chart")
     fig, ax = plt.subplots()
-    ax.pie(metric_2_period_1, labels=['A', 'B', 'C'], autopct='%1.1f%%', colors=['red', 'pink', 'orange'], startangle=140)
-    ax.pie(metric_2_period_2, labels=['A', 'B', 'C'], autopct='%1.1f%%', colors=['blue', 'lightblue', 'lightgreen'], startangle=140)
+    ax.pie([metric_2_period_1_value, metric_2_period_2_value], 
+           labels=['Time Period 1', 'Time Period 2'], 
+           autopct='%1.1f%%', colors=['red', 'blue'], startangle=140)
     ax.set_title("Metric 2 Distribution")
     st.pyplot(fig)
     

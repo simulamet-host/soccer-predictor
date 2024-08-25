@@ -30,12 +30,9 @@ def show():
     np.random.seed(42)
     metric_1_period_1 = np.random.normal(loc=0, scale=1, size=100)
     metric_1_period_2 = np.random.normal(loc=0.5, scale=1, size=100)
-    
-    metric_2_period_1 = np.random.normal(loc=0, scale=1, size=100)
-    metric_2_period_2 = np.random.normal(loc=0.5, scale=1, size=100)
-    
-    metric_3_period_1 = np.random.rand(3)
-    metric_3_period_2 = np.random.rand(3)
+        
+    metric_2_period_1 = np.random.rand(3)
+    metric_2_period_2 = np.random.rand(3)
     
     # Plotting the Metrics
     st.write(f"**Metrics Comparison for {team}**")
@@ -50,38 +47,27 @@ def show():
     ax.set_ylabel("Frequency")
     ax.legend()
     st.pyplot(fig)
-    
-    # Metric 2: Histogram
-    st.write("### Metric 2: Histogram")
-    fig, ax = plt.subplots()
-    ax.hist(metric_2_period_1, bins=30, alpha=0.7, color='red', label='Time Period 1')
-    ax.hist(metric_2_period_2, bins=30, alpha=0.7, color='blue', label='Time Period 2')
-    ax.set_title("Metric 2 Distribution")
-    ax.set_xlabel("Metric 2")
-    ax.set_ylabel("Frequency")
-    ax.legend()
-    st.pyplot(fig)
-    
-    # Metric 3: Pie Chart
+        
+    # Metric 2: Pie Chart
     st.write("### Metric 3: Pie Chart")
     fig, ax = plt.subplots()
-    ax.pie(metric_3_period_1, labels=['A', 'B', 'C'], autopct='%1.1f%%', colors=['red', 'pink', 'orange'], startangle=140)
-    ax.pie(metric_3_period_2, labels=['A', 'B', 'C'], autopct='%1.1f%%', colors=['blue', 'lightblue', 'lightgreen'], startangle=140)
-    ax.set_title("Metric 3 Distribution")
+    ax.pie(metric_2_period_1, labels=['A', 'B', 'C'], autopct='%1.1f%%', colors=['red', 'pink', 'orange'], startangle=140)
+    ax.pie(metric_2_period_2, labels=['A', 'B', 'C'], autopct='%1.1f%%', colors=['blue', 'lightblue', 'lightgreen'], startangle=140)
+    ax.set_title("Metric 2 Distribution")
     st.pyplot(fig)
     
     # Additional Metric: Line Chart Example
-    st.write("### Metric 4: Line Chart Example")
+    st.write("### Metric 3: Line Chart Example")
     dates = pd.date_range(start='1/1/2023', periods=100)
-    metric_4_period_1 = np.cumsum(np.random.randn(100))
-    metric_4_period_2 = np.cumsum(np.random.randn(100))
+    metric_3_period_1 = np.cumsum(np.random.randn(100))
+    metric_3_period_2 = np.cumsum(np.random.randn(100))
     
     fig, ax = plt.subplots()
-    ax.plot(dates, metric_4_period_1, color='red', label='Time Period 1')
-    ax.plot(dates, metric_4_period_2, color='blue', label='Time Period 2')
-    ax.set_title("Metric 4 Over Time")
+    ax.plot(dates, metric_3_period_1, color='red', label='Time Period 1')
+    ax.plot(dates, metric_3_period_2, color='blue', label='Time Period 2')
+    ax.set_title("Metric 3 Over Time")
     ax.set_xlabel("Date")
-    ax.set_ylabel("Metric 4")
+    ax.set_ylabel("Metric 3")
     ax.legend()
     st.pyplot(fig)
 

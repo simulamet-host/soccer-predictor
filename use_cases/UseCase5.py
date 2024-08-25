@@ -58,7 +58,7 @@ def show():
     st.pyplot(fig)
     
     # Additional Metric: Line Chart Example
-    st.write("### Metric 3: Line Chart Example")
+    st.write("### Metric 3: Line Chart")
     dates = pd.date_range(start='1/1/2023', periods=100)
     metric_3_period_1 = np.cumsum(np.random.randn(100))
     metric_3_period_2 = np.cumsum(np.random.randn(100))
